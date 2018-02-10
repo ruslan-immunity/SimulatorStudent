@@ -1,0 +1,28 @@
+﻿<Window x:Class="Simulator_student.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Simulator_student"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="MainWindow" Height="350" Width="500" Loaded="Window_Loaded">
+    <Grid>
+        <Button x:Name="button" Content="Навчання" HorizontalAlignment="Left" VerticalAlignment="Top" Width="135" Margin="184,88,0,0" Height="45" Click="button_Click"/>
+        <Button x:Name="button_Copy" Content="Саморозвиток" HorizontalAlignment="Left" VerticalAlignment="Top" Width="135" Margin="184,138,0,0" Height="45" Click="button_Copy_Click"/>
+        <Button x:Name="button_Copy1" Content="Розваги та відпочинок" HorizontalAlignment="Left" VerticalAlignment="Top" Width="135" Margin="184,188,0,0" Height="45" Click="button_Copy1_Click"/>
+        <Label x:Name="label" Content="Енергія:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="54" Margin="10,0,0,0"/>
+        <Label x:Name="label1" Content="Знання:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="51" Margin="116,0,0,0"/>
+        <Label x:Name="label2" Content="Курс:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="37" Margin="323,0,0,0"/>
+        <Label x:Name="label3" Content="Бюджет:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="58" Margin="10,26,0,0" RenderTransformOrigin="-0.045,0.577"/>
+        <Label x:Name="label4" Content="Навички:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="61" Margin="209,0,0,0"/>
+        <Label x:Name="label5" Content="0000" HorizontalAlignment="Left" VerticalAlignment="Top" Width="35" Margin="64,0,0,0"/>
+        <Label x:Name="label6" Content="0000" HorizontalAlignment="Left" VerticalAlignment="Top" Width="35" Margin="167,0,0,0" RenderTransformOrigin="1.886,1.423"/>
+        <Label x:Name="label7" Content="0000" HorizontalAlignment="Left" VerticalAlignment="Top" Width="35" Margin="270,0,0,0"/>
+        <Label x:Name="label8" Content="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="21" Margin="360,0,0,0" RenderTransformOrigin="1.476,-0.077"/>
+        <Label x:Name="label9" Content="0000" HorizontalAlignment="Left" VerticalAlignment="Top" Width="35" Margin="64,26,0,0" RenderTransformOrigin="0.543,0.038"/>
+        <Label x:Name="label10" Content="Тиждень:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Margin="384,0,0,0" RenderTransformOrigin="0.093,0.5"/>
+        <Label x:Name="label11" Content="00" HorizontalAlignment="Left" VerticalAlignment="Top" Width="25" Margin="444,0,0,0" RenderTransformOrigin="-0.4,0.5"/>
+
+    </Grid>
+</Window>
