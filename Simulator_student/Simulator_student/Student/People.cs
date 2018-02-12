@@ -8,71 +8,25 @@ namespace Simulator_student.Student
 {
     public class People
     {
-        string name;
-        double money;
-        int energy;
-        double knowledge;
+        public string Name { get; set; }
+        public int Energy { get; set; }
+        public double Money { get; set; }
+        public int Knowledge { get; set; }
 
         public People()
         {
-            name = "";
-            energy = 1000;
-            money = 800;
-            knowledge = 100; //максимально 500
-        }
-
-
-        //Name
-        public string getName()
-        {
-            return name;
-        }
-        public void setName(string Name)
-        {
-            this.name = Name;
-        }
-
-        //Money
-        public double getMoney()
-        {
-            return money;
-        }
-
-        public void setMoney(double Money)
-        {
-            this.money += Money;
+            this.Name = "";
+            this.Energy = 1000;
+            this.Money = 800;
+            this.Knowledge = 100; //max 500
         }
 
         public void Clear_people()
         {
-            name = "";
-            energy = 1000;
-            money = 800;
-            knowledge = 100; //максимально 500
+            this.Name = "";
+            this.Energy = 1000;
+            this.Money = 800;
+            this.Knowledge = 100; //max 500
         }
-
-        //Energy
-        public int getEnergy()
-        {
-            return energy;
-        }
-
-        public void setEnergy(int Energy)
-        {
-            this.energy += Energy;
-        }
-
-        //Knowledge
-        public double getKnowledge()
-        {
-            return knowledge;
-        }
-
-        public void setKnowledge(int Knowledge)
-        {
-            this.knowledge += Knowledge;
-        }
-
-
     }
 }

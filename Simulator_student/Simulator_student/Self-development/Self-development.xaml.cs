@@ -1,102 +1,101 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
+﻿using System.Windows;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Simulator_student
 {
-    /// <summary>
-    /// Interaction logic for Self_development.xaml
-    /// </summary>
-    public partial class Self_dev : Window
+    public partial class Self_dev
     {
-        List<Self_development.Self> selfdev = new List<Self_development.Self>();
-        public Self_development.Self clickedSelf;
-        MainWindow mw;
-        public Self_dev(MainWindow MainW)
+        Student.Student student;
+        string [] arr_name_tasks = { "Написати HelloWorld", "Прочитати книгу", "Зайнятись фрілансом", "Підти на фірму" };
+
+        public Self_dev(Student.Student stud)
         {
             InitializeComponent();
-            mw = MainW;
-            selfdev.Add(new Self_development.Self("Написать HelloWorld", -20, 0, 10));
-            selfdev.Add(new Self_development.Self("Прочесть книгу", -45, 0, 25));
-            selfdev.Add(new Self_development.Self("Занятся фрилансом", -100, 100, 20));
-            selfdev.Add(new Self_development.Self("Сходить на фирму", -300, 0, 100));
 
-            button.Content = selfdev[0].Name;
-            button1.Content = selfdev[1].Name;
-            button2.Content = selfdev[2].Name;
-            button3.Content = selfdev[3].Name;
+            student = stud;
+            button.Content = arr_name_tasks[0];
+            button1.Content = arr_name_tasks[1];
+            button2.Content = arr_name_tasks[2];
+            button3.Content = arr_name_tasks[3];
 
-            if (mw.stud.getKnowledge() < 150)
+            if (stud.Knowledge < 150)
             {
                 button1.IsEnabled = false;
-                button1.Content += " | Need: 150+ Knowlenge";
+                button1.Content += " | Потрбіно мати 150 оч. знань";
             }
-            if (mw.stud.getKnowledge() < 300)
+            if (stud.Knowledge < 300)
             {
                 button2.IsEnabled = false;
-                button2.Content += " | Need: 300+ Knowlenge";
+                button2.Content += " | Потрбіно мати 300 оч. знань";
             }
-            if (mw.stud.getKnowledge() < 400)
+            if (stud.Knowledge < 400)
             {
                 button3.IsEnabled = false;
-                button3.Content += " | Need: 400+ Knowlenge";
+                button3.Content += " | Потрбіно мати 400 оч. знань";
+            }
+        }
+
+        public void check_energy()
+        {
+            if (student.Energy <= 0)
+            {
+                label5.Foreground = Brushes.Red;
+                button.IsEnabled = false;
+                button1.IsEnabled = false;
+                button2.IsEnabled = false;
+            }
+            else
+            {
+                button.IsEnabled = true;
+                button1.IsEnabled = true;
+                button2.IsEnabled = true;
+                label5.Foreground = Brushes.Black;
             }
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            clickedSelf = selfdev[0];
-            mw.stud.addAction();
-            this.Close();
+            student.set_parameters(-20, 0, 10, 0);
+            student.Count_action++;
+            Window_Loaded(sender, e);
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            clickedSelf = selfdev[1];
-            mw.stud.addAction();
-            this.Close();
+            student.set_parameters(-45, 0, 25, 0);
+            student.Count_action++;
+            Window_Loaded(sender, e);
         }
 
         private void button2_Click(object sender, RoutedEventArgs e)
         {
-            clickedSelf = selfdev[2];
-            mw.stud.addAction();
-            this.Close();
+            student.set_parameters(-100, 100, 50, 0);
+            student.Count_action++;
+            Window_Loaded(sender, e);
         }
 
         private void button3_Click(object sender, RoutedEventArgs e)
         {
-            clickedSelf = selfdev[3];
-            mw.stud.addAction();
-            this.Close();
+            student.set_parameters(-300, 0, 100, 0);
+            student.Count_action++;
+            Window_Loaded(sender, e);
         }
 
         private void button4_Click(object sender, RoutedEventArgs e)
         {
-            clickedSelf = new Self_development.Self("", 0, 0, 0);
             this.Close();
         }
 
-        private void Window_Loaded_1(object sender, RoutedEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            label5.Content = mw.stud.getEnergy().ToString();
-            label6.Content = mw.stud.getKnowledge().ToString();
-            label8.Content = mw.stud.getKurs().ToString();
-            label7.Content = mw.stud.getSkills().ToString();
-            label9.Content = mw.stud.getMoney().ToString();
-            label11.Content = mw.stud.CountWeek().ToString();
-            mw.stud.Scholarship();
-
+            student.check_scolarship();
+            label5.Content = student.Energy.ToString();
+            label6.Content = student.Knowledge.ToString();
+            label8.Content = student.Kurs.ToString();
+            label7.Content = student.Skills.ToString();
+            label9.Content = student.Money.ToString();
+            label11.Content = student.CountWeek().ToString();
+            check_energy();
         }
     }
 }

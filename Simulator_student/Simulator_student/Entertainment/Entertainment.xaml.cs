@@ -1,103 +1,85 @@
-﻿
-using Simulator_student.Entertainment;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
+﻿using System.Windows;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Simulator_student
 {
-    /// <summary>
-    /// Interaction logic for Entertainment.xaml
-    /// </summary>
-    public partial class Entertainments : Window
+    public partial class Entertainments
     {
-        List<Entertainment.Entert> ent = new List<Entertainment.Entert>();
-        public Entertainment.Entert clickedEntert;
-        MainWindow mw;
-        public Entertainments(MainWindow MW)
+        Student.Student student;
+        string[] arr_name_tasks = { "Пограти в комп.гру", "Посидіти в соц.мережі", "Подивитися фільм", "Поспати" };
+
+        public Entertainments(Student.Student stud)
         {
             InitializeComponent();
-            mw = MW;
-            ent.Add(new Entert("Погамать в компуктер", 140, 0, -50));
-            ent.Add(new Entert("Посидеть в интернете", 90, 0, -45));
-            ent.Add(new Entert("Посмотреть кино", 70, 0, -35));
-            ent.Add(new Entert("Поспать", 60, 0, -30));
 
-            button.Content = ent[0].Name;
-            button1.Content = ent[1].Name;
-            button2.Content = ent[2].Name;
-            button3.Content = ent[3].Name;
+            student = stud;
+            button.Content = arr_name_tasks[0];
+            button1.Content = arr_name_tasks[1];
+            button2.Content = arr_name_tasks[2];
+            button3.Content = arr_name_tasks[3];
 
-            if (mw.stud.getEnergy() > 150)
+        }
+
+        public void check_energy()
+        {
+            if (student.Energy <= 0)
             {
+                label5.Foreground = Brushes.Red;
+                button.IsEnabled = false;
                 button1.IsEnabled = false;
-                button1.Content += " | Need: 150- Energy";
-            }
-            if (mw.stud.getKnowledge() > 300)
-            {
                 button2.IsEnabled = false;
-                button2.Content += " | Need: 300- Energy";
             }
-            if (mw.stud.getKnowledge() < 600)
+            else
             {
-                button3.IsEnabled = false;
-                button3.Content += " | Need: 600- Energy";
+                button.IsEnabled = true;
+                button1.IsEnabled = true;
+                button2.IsEnabled = true;
+                label5.Foreground = Brushes.Black;
             }
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            clickedEntert = ent[0];
-            mw.stud.addAction();
-            Close();
+            student.set_parameters(50, 0, -20, 0);
+            student.Count_action++;
+            Window_Loaded(sender, e);
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            clickedEntert = ent[1];
-            mw.stud.addAction();
-            Close();
+            student.set_parameters(60, 0, -25, 0);
+            student.Count_action++;
+            Window_Loaded(sender, e);
         }
 
         private void button2_Click(object sender, RoutedEventArgs e)
         {
-            clickedEntert = ent[2];
-            mw.stud.addAction();
-            Close();
+            student.set_parameters(80, 0, -30, 0);
+            student.Count_action++;
+            Window_Loaded(sender, e);
         }
 
         private void button3_Click(object sender, RoutedEventArgs e)
         {
-            clickedEntert = ent[3];
-            mw.stud.addAction();
-            Close();
+            student.set_parameters(150, 0, -5, 0);
+            student.Count_action++;
+            Window_Loaded(sender, e);
         }
 
         private void button4_Click(object sender, RoutedEventArgs e)
         {
-            clickedEntert = new Entert("", 0, 0, 0);
-            Close();
+            this.Close();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            label5.Content = mw.stud.getEnergy().ToString();
-            label6.Content = mw.stud.getKnowledge().ToString();
-            label8.Content = mw.stud.getKurs().ToString();
-            label7.Content = mw.stud.getSkills().ToString();
-            label9.Content = mw.stud.getMoney().ToString();
-            label11.Content = mw.stud.CountWeek().ToString();
-            mw.stud.Scholarship();
+            label5.Content = student.Energy.ToString();
+            label6.Content = student.Knowledge.ToString();
+            label8.Content = student.Kurs.ToString();
+            label7.Content = student.Skills.ToString();
+            label9.Content = student.Money.ToString();
+            label11.Content = student.CountWeek().ToString();
+            check_energy();
         }
     }
 }

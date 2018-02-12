@@ -8,91 +8,63 @@ namespace Simulator_student.Student
 {
     public class Student : People
     {
-        int kurs;
-        bool scholarship;
-        int count_action;
-        double skills;
+        public int Kurs { get; set; }
+        public bool Scholarship { get; set; }
+        public int Count_action { get; set; }
+        public double Skills { get; set; }
 
         public Student()
         {
-            kurs = 1;
-            scholarship = true;
-            count_action = 0;
-            skills = 0;
+            this.Kurs = 1;
+            this.Scholarship = true;
+            this.Count_action = 0;
+            this.Skills = 0;
+            Clear_people();
+        }
+
+        public void set_parameters(int energy, double money, int knowledge, double skills)
+        {
+            this.Energy += energy;
+            this.Money += money;
+            this.Knowledge += knowledge;
+            this.Skills += skills;
         }
 
         public void Clear()
         {
-            kurs = 1;
-            scholarship = true;
-            count_action = 0;
-            skills = 0;
+            this.Kurs = 1;
+            this.Scholarship = true;
+            this.Count_action = 0;
+            this.Skills = 0;
             Clear_people();
         }
 
-
-
+        //определить на какой по счету недели находится студент по количеству сделанных действий
         public int CountWeek()
         {
-            return count_action / 3 + 1;
+            return this.Count_action / 3 + 1;
         }
 
-
-        //action
-        public int getAction()
-        {
-            return count_action;
-        }
-
-        public void addAction()
-        {
-            this.count_action++;
-        }
-
+        // сдать экзамены --> +3 действия
         public void examAction()
         {
-            this.count_action += 3;
+            this.Count_action += 3;
         }
 
-        //Kurs
-        public int getKurs()
+        //scolarship
+        public void check_scolarship()
         {
-            return kurs;
+            // 3 action - 1 week
+            if (Knowledge >= 275 && CountWeek() <= 8) this.Scholarship = true;// scolarship for the first semester
+            else if (Knowledge >= 475 && CountWeek() <= 16) this.Scholarship = true; // scolarship for the second semester
+            else this.Scholarship = false;
+            earningScolarship(this.Scholarship);// Appendix to the budget of the scholarship, if good academic standing
         }
 
-        public void setKurs(int Kurs)
+        public void earningScolarship(bool Scholarship)
         {
-            this.kurs = Kurs;
+            // check scholarship
+            if (Scholarship) Money += 825;
         }
-
-        //Skills
-        public double getSkills()
-        {
-            return skills;
-        }
-
-        public void setSkills(int Skills)
-        {
-            this.skills += Skills;
-        }
-
-        //Стипендия
-        public void Scholarship()// 3 действия - 1 неделя
-        {
-            if (getKnowledge() >= 275 && CountWeek() == 8) scholarship = true;// стипендия за первый семестр
-            else if (getKnowledge() >= 475 && CountWeek() == 16) scholarship = true; // стипендия за второй семестр
-            else scholarship = false;
-            getscholarship(scholarship);// добавление к бюджету стипендии стипендии, если хорошая успеваемость
-        }
-
-        public void getscholarship(bool Scholarship)
-        {
-            //добавление стипендии
-            if (Scholarship) setMoney(825);
-            else setMoney(0);
-        }
-
-
-
     }
 }

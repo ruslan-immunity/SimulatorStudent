@@ -58,14 +58,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Entertainment\Entert.cs" />
     <Compile Include="Entertainment\Entertainment.xaml.cs">
       <DependentUpon>Entertainment.xaml</DependentUpon>
     </Compile>
     <Compile Include="Self-development\Self-development.xaml.cs">
       <DependentUpon>Self-development.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Self-development\Self.cs" />
     <Compile Include="Student\People.cs" />
     <Compile Include="Student\Student.cs" />
     <Compile Include="Study\Study.xaml.cs">

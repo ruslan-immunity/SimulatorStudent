@@ -6,13 +6,13 @@
         xmlns:local="clr-namespace:Simulator_student"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Self_development" Height="416.151" Width="500" Loaded="Window_Loaded_1">
+        Title="Self_development" Height="416.151" Width="500" Loaded="Window_Loaded">
     <Grid>
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="10,83,0,0" VerticalAlignment="Top" Width="472" Height="56" Click="button_Click"/>
-        <Button x:Name="button1" Content="Button" HorizontalAlignment="Left" Margin="10,144,0,0" VerticalAlignment="Top" Width="472" Height="56" Click="button1_Click"/>
-        <Button x:Name="button2" Content="Button" HorizontalAlignment="Left" Margin="10,205,0,0" VerticalAlignment="Top" Width="472" Height="56" Click="button2_Click"/>
-        <Button x:Name="button3" Content="Button" HorizontalAlignment="Left" Margin="10,266,0,0" VerticalAlignment="Top" Width="472" Height="60" Click="button3_Click"/>
-        <Button x:Name="button4" Content="Отменить" HorizontalAlignment="Left" Margin="10,347,0,0" VerticalAlignment="Top" Width="472" Height="28" Click="button4_Click"/>
+        <Button x:Name="button" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="300" Margin="96,65,0,0" Height="42" Click="button_Click"/>
+        <Button x:Name="button1" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="300" Margin="96,112,0,0" Height="42" Click="button1_Click"/>
+        <Button x:Name="button2" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="300" Margin="96,159,0,0" Height="42" Click="button2_Click"/>
+        <Button x:Name="button3" Content="" HorizontalAlignment="Left" IsEnabled="False" VerticalAlignment="Top" Width="300" Margin="96,206,0,0" Height="42" Click="button3_Click"/>
+        <Button x:Name="button4" Content="Назад" HorizontalAlignment="Left" VerticalAlignment="Top" Width="132" Margin="178,278,0,0" Height="31" Click="button4_Click"/>
         <Label x:Name="label" Content="Енергія:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="54" Margin="10,0,0,0"/>
         <Label x:Name="label1" Content="Знання:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="51" Margin="116,0,0,0"/>
         <Label x:Name="label2" Content="Курс:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="37" Margin="323,0,0,0"/>
@@ -25,6 +25,5 @@
         <Label x:Name="label9" Content="0000" HorizontalAlignment="Left" VerticalAlignment="Top" Width="35" Margin="64,26,0,0" RenderTransformOrigin="0.543,0.038"/>
         <Label x:Name="label10" Content="Тиждень:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Margin="384,0,0,0" RenderTransformOrigin="0.093,0.5"/>
         <Label x:Name="label11" Content="00" HorizontalAlignment="Left" VerticalAlignment="Top" Width="25" Margin="444,0,0,0" RenderTransformOrigin="-0.4,0.5"/>
-
     </Grid>
 </Window>
